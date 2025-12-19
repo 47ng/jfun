@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import { CodeBlock } from './components/code-block'
 import {
   CounterDemo,
   PaginationDemo,
@@ -6,6 +7,58 @@ import {
   TabsDemo,
   ToggleDemo,
 } from './components/demos'
+
+const nightmareCode = `// This is what you're doing right now, isn't it?
+const searchParams = new URLSearchParams(window.location.search)
+const page = parseInt(searchParams.get('page') || '1')
+const query = searchParams.get('q') || ''
+const sortBy = searchParams.get('sort') || 'date'
+const isAscending = searchParams.get('asc') === 'true'
+
+// And when you need to update it... oh boy
+const updateUrl = (key: string, value: string) => {
+  const url = new URL(window.location.href)
+  url.searchParams.set(key, value)
+  // Do I push? Replace? What about history?
+  // What about SSR? What about hydration?
+  // What about type safety? LOL WHAT TYPE SAFETY
+  window.history.pushState({}, '', url)
+  // Oh wait, React didn't re-render. FUCK.
+}`
+
+const counterCode = `import { useQueryState, parseAsInteger } from 'nuqs'
+
+function Counter() {
+  const [count, setCount] = useQueryState(
+    'count',
+    parseAsInteger.withDefault(0)
+  )
+
+  return (
+    <button onClick={() => setCount(c => c + 1)}>
+      Count: {count}
+    </button>
+  )
+}`
+
+const typeSafeCode = `const [page, setPage] = useQueryState('page', parseAsInteger)
+//     ^? number | null
+
+const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
+//     ^? number (never null, because you have a fucking default)`
+
+const parsersCode = `import {
+  parseAsString,
+  parseAsInteger,
+  parseAsFloat,
+  parseAsBoolean,
+  parseAsIsoDateTime,
+  parseAsArrayOf,
+  parseAsJson,
+  parseAsStringEnum,
+} from 'nuqs'
+
+// All type-safe. All fucking work.`
 
 export default function Home() {
   return (
@@ -50,29 +103,8 @@ export default function Home() {
             , and losing state on every fucking page refresh?
           </p>
 
-          <div className="code-block mb-8">
-            <div className="text-slate-500 mb-2 text-xs">
-              your-nightmare.tsx
-            </div>
-            <pre className="text-sm">
-              {`// This is what you're doing right now, isn't it?
-const searchParams = new URLSearchParams(window.location.search)
-const page = parseInt(searchParams.get('page') || '1')
-const query = searchParams.get('q') || ''
-const sortBy = searchParams.get('sort') || 'date'
-const isAscending = searchParams.get('asc') === 'true'
-
-// And when you need to update it... oh boy
-const updateUrl = (key: string, value: string) => {
-  const url = new URL(window.location.href)
-  url.searchParams.set(key, value)
-  // Do I push? Replace? What about history?
-  // What about SSR? What about hydration?
-  // What about type safety? LOL WHAT TYPE SAFETY
-  window.history.pushState({}, '', url)
-  // Oh wait, React didn't re-render. FUCK.
-}`}
-            </pre>
+          <div className="mb-8">
+            <CodeBlock code={nightmareCode} filename="your-nightmare.tsx" />
           </div>
 
           <p className="text-lg text-slate-400">
@@ -109,24 +141,8 @@ const updateUrl = (key: string, value: string) => {
             fucking need:
           </p>
 
-          <div className="code-block mb-8">
-            <div className="text-slate-500 mb-2 text-xs">counter.tsx</div>
-            <pre className="text-sm">
-              {`import { useQueryState, parseAsInteger } from 'nuqs'
-
-function Counter() {
-  const [count, setCount] = useQueryState(
-    'count',
-    parseAsInteger.withDefault(0)
-  )
-
-  return (
-    <button onClick={() => setCount(c => c + 1)}>
-      Count: {count}
-    </button>
-  )
-}`}
-            </pre>
+          <div className="mb-8">
+            <CodeBlock code={counterCode} filename="counter.tsx" />
           </div>
 
           <p className="text-lg text-slate-400">
@@ -161,15 +177,7 @@ function Counter() {
                 infers everything. No more
                 <code className="text-pink-400 ml-1">as any</code> bullshit.
               </p>
-              <div className="code-block">
-                <pre className="text-sm">
-                  {`const [page, setPage] = useQueryState('page', parseAsInteger)
-//     ^? number | null
-
-const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
-//     ^? number (never null, because you have a fucking default)`}
-                </pre>
-              </div>
+              <CodeBlock code={typeSafeCode} lang="typescript" />
             </div>
 
             <div>
@@ -216,22 +224,7 @@ const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
                 literals... Need something custom? Make your own parser in 5
                 lines.
               </p>
-              <div className="code-block">
-                <pre className="text-sm">
-                  {`import {
-  parseAsString,
-  parseAsInteger,
-  parseAsFloat,
-  parseAsBoolean,
-  parseAsIsoDateTime,
-  parseAsArrayOf,
-  parseAsJson,
-  parseAsStringEnum,
-} from 'nuqs'
-
-// All type-safe. All fucking work.`}
-                </pre>
-              </div>
+              <CodeBlock code={parsersCode} lang="typescript" />
             </div>
           </div>
         </section>
