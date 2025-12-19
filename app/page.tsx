@@ -131,8 +131,9 @@ export default function Home() {
           </p>
           <p className="text-lg text-zinc-400 mt-4">
             <strong className="text-white">This is the hell you chose.</strong>{' '}
-            And for what? &ldquo;I don&apos;t need a library for this&rdquo;?
-            Give me a fucking break.
+            And for what?{' '}
+            <em>&ldquo;I don&apos;t need a library for this&rdquo;</em>? Give me
+            a fucking break.
           </p>
         </section>
 
@@ -223,8 +224,8 @@ export default function Home() {
                 . TypeScript infers everything. No more
                 <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded ml-1 text-sm">
                   as any
-                </code>
-                , lying to TypeScript bullshit.
+                </code>{' '}
+                lying to TypeScript bullshit.
               </p>
               <CodeBlock code={typeSafeCode} lang="typescript" />
             </div>
@@ -234,10 +235,13 @@ export default function Home() {
                 Shareable fucking state
               </h4>
               <p className="text-zinc-400 mb-4 text-lg">
-                Copy the URL. Send it to someone. They get the exact same state.
-                Filters, pagination, search queries, tabs, everything. No more
-                &ldquo;can you send me a screenshot of what you&apos;re
-                seeing?&rdquo;
+                Copy the URL. Send it to someone. They get the exact same
+                fucking state. Filters, pagination, search queries, tabs,
+                everything. No more{' '}
+                <em>
+                  &ldquo;can you send me a screenshot of what you&apos;re
+                  seeing?&rdquo;
+                </em>
               </p>
             </div>
 
@@ -577,6 +581,13 @@ export default function Home() {
             </a>
             ,{' '}
             <a
+              href="https://justfuckinguseeffect.dev/"
+              rel="noopener noreferrer"
+            >
+              justfuckinguseeffect.dev
+            </a>
+            ,{' '}
+            <a
               href="https://motherfuckingwebsite.com"
               rel="noopener noreferrer"
             >
@@ -586,7 +597,10 @@ export default function Home() {
           </p>
           <p>
             Slop by Claude Opus 4.5, prompted by{' '}
-            <a href="https://x.com/nuqs47ng">François Best</a>. Powered by{' '}
+            <a href="https://bsky.app/profile/francoisbest.com">
+              François Best
+            </a>
+            , powered by{' '}
             <a href="https://nextjs.org" rel="noopener noreferrer">
               Next.js
             </a>
