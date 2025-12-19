@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent: #f472b6;
+  --accent-2: #818cf8;
+  --code-bg: #1a1a2e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f472b6 0%, #818cf8 50%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid #2a2a4e;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.code-block .keyword {
+  color: #c792ea;
+}
+
+.code-block .string {
+  color: #c3e88d;
+}
+
+.code-block .function {
+  color: #82aaff;
+}
+
+.code-block .comment {
+  color: #676e95;
+}
+
+.code-block .variable {
+  color: #f78c6c;
+}
+
+.code-block .tag {
+  color: #f07178;
+}
+
+.code-block .attr {
+  color: #ffcb6b;
+}
+
+.demo-card {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16162a 100%);
+  border: 1px solid #2a2a4e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.demo-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(244, 114, 182, 0.1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f472b6 0%, #818cf8 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(244, 114, 182, 0.4);
+}
+
+.url-display {
+  background: #0d0d1a;
+  border: 1px solid #2a2a4e;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  color: #34d399;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(244, 114, 182, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-2);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #2a2a4e;
+  margin: 4rem 0;
+}
