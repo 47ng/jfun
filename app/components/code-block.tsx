@@ -13,13 +13,13 @@ export async function CodeBlock({
 }: CodeBlockProps) {
   const html = await codeToHtml(code.trim(), {
     lang,
-    theme: 'github-dark',
+    theme: 'vitesse-dark',
   })
 
   return (
     <div className="code-block">
       {filename && (
-        <div className="text-slate-500 mb-2 text-xs">{filename}</div>
+        <div className="text-zinc-500 mb-2 text-xs font-mono">{filename}</div>
       )}
       <div
         className="[&_pre]:!bg-transparent [&_pre]:!p-0 [&_pre]:!m-0 [&_code]:text-sm [&_code]:leading-relaxed"

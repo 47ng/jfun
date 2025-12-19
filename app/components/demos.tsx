@@ -20,25 +20,25 @@ export function CounterDemo() {
         <div className="flex gap-2">
           <button
             onClick={() => setCount((c) => c - 1)}
-            className="w-10 h-10 rounded-lg bg-slate-700 hover:bg-slate-600 text-xl font-bold transition-colors"
+            className="w-10 h-10 rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-xl font-bold transition-colors"
           >
             -
           </button>
           <button
             onClick={() => setCount((c) => c + 1)}
-            className="w-10 h-10 rounded-lg bg-slate-700 hover:bg-slate-600 text-xl font-bold transition-colors"
+            className="w-10 h-10 rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-xl font-bold transition-colors"
           >
             +
           </button>
           <button
             onClick={() => setCount(null)}
-            className="px-3 h-10 rounded-lg bg-slate-700 hover:bg-slate-600 text-sm transition-colors"
+            className="px-3 h-10 rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-sm transition-colors"
           >
             Reset
           </button>
         </div>
       </div>
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-zinc-500">
         Click the buttons. Watch the fucking URL. Refresh the page. It&apos;s
         still there.
       </p>
@@ -56,13 +56,15 @@ export function SearchDemo() {
         value={query}
         onChange={(e) => setQuery(e.target.value || null)}
         placeholder="Type something..."
-        className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 focus:border-pink-400 focus:outline-none transition-colors"
+        className="w-full px-4 py-3 rounded-md bg-zinc-900 border border-zinc-800 focus:border-zinc-600 focus:outline-none transition-colors"
       />
-      <p className="mt-4 text-sm text-slate-400">
+      <p className="mt-4 text-sm text-zinc-500">
         {query ? (
           <>
             Searching for:{' '}
-            <span className="text-pink-400">&ldquo;{query}&rdquo;</span>
+            <span className="text-white font-medium">
+              &ldquo;{query}&rdquo;
+            </span>
           </>
         ) : (
           'Type something and share the fucking URL'
@@ -93,12 +95,12 @@ export function ToggleDemo() {
         <button
           onClick={() => setDarkMode((d) => !d)}
           className={`w-14 h-8 rounded-full transition-colors ${
-            darkMode ? 'bg-pink-500' : 'bg-slate-600'
+            darkMode ? 'bg-white' : 'bg-zinc-700'
           }`}
         >
           <span
-            className={`block w-6 h-6 bg-white rounded-full transition-transform mx-1 ${
-              darkMode ? 'translate-x-6' : ''
+            className={`block w-6 h-6 rounded-full transition-transform mx-1 ${
+              darkMode ? 'translate-x-6 bg-black' : 'bg-white'
             }`}
           />
         </button>
@@ -108,12 +110,12 @@ export function ToggleDemo() {
         <button
           onClick={() => setShowNotifications((n) => !n)}
           className={`w-14 h-8 rounded-full transition-colors ${
-            showNotifications ? 'bg-pink-500' : 'bg-slate-600'
+            showNotifications ? 'bg-white' : 'bg-zinc-700'
           }`}
         >
           <span
-            className={`block w-6 h-6 bg-white rounded-full transition-transform mx-1 ${
-              showNotifications ? 'translate-x-6' : ''
+            className={`block w-6 h-6 rounded-full transition-transform mx-1 ${
+              showNotifications ? 'translate-x-6 bg-black' : 'bg-white'
             }`}
           />
         </button>
@@ -123,17 +125,17 @@ export function ToggleDemo() {
         <button
           onClick={() => setCompactView((c) => !c)}
           className={`w-14 h-8 rounded-full transition-colors ${
-            compactView ? 'bg-pink-500' : 'bg-slate-600'
+            compactView ? 'bg-white' : 'bg-zinc-700'
           }`}
         >
           <span
-            className={`block w-6 h-6 bg-white rounded-full transition-transform mx-1 ${
-              compactView ? 'translate-x-6' : ''
+            className={`block w-6 h-6 rounded-full transition-transform mx-1 ${
+              compactView ? 'translate-x-6 bg-black' : 'bg-white'
             }`}
           />
         </button>
       </label>
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-zinc-500">
         Toggle these. Copy the URL. Send it. Recipient gets your exact fucking
         preferences.
       </p>
@@ -168,30 +170,30 @@ export function TabsDemo() {
 
   return (
     <div className="demo-card">
-      <div className="flex gap-1 mb-4 p-1 bg-slate-800 rounded-lg">
+      <div className="flex gap-1 mb-4 p-1 bg-zinc-900 rounded-md border border-zinc-800">
         {tabs.map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors capitalize ${
+            className={`flex-1 px-4 py-2 rounded text-sm font-medium transition-colors capitalize ${
               tab === t
-                ? 'bg-pink-500 text-white'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-white text-black'
+                : 'text-zinc-500 hover:text-white'
             }`}
           >
             {t}
           </button>
         ))}
       </div>
-      <div className="p-4 bg-slate-800/50 rounded-lg">
-        <p className="text-slate-300">
+      <div className="p-4 bg-zinc-900/50 rounded-md border border-zinc-800">
+        <p className="text-zinc-400">
           {tab === 'overview' && 'Welcome to the fucking overview.'}
           {tab === 'features' && 'Look at all these fucking features.'}
           {tab === 'pricing' && "It's fucking free. Open source."}
           {tab === 'docs' && 'Read the fucking docs at nuqs.dev'}
         </p>
       </div>
-      <p className="mt-4 text-sm text-slate-400">
+      <p className="mt-4 text-sm text-zinc-500">
         Deep linking to tabs? It just fucking works.
       </p>
     </div>
@@ -207,7 +209,7 @@ export function PaginationDemo() {
         <button
           onClick={() => setPage((p) => Math.max(1, p - 1))}
           disabled={page <= 1}
-          className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-2 rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           ← Prev
         </button>
@@ -215,10 +217,10 @@ export function PaginationDemo() {
           <button
             key={p}
             onClick={() => setPage(p)}
-            className={`w-10 h-10 rounded-lg font-medium transition-colors ${
+            className={`w-10 h-10 rounded-md font-medium transition-colors border ${
               page === p
-                ? 'bg-pink-500 text-white'
-                : 'bg-slate-700 hover:bg-slate-600'
+                ? 'bg-white text-black border-white'
+                : 'bg-zinc-900 hover:bg-zinc-800 border-zinc-800'
             }`}
           >
             {p}
@@ -227,12 +229,12 @@ export function PaginationDemo() {
         <button
           onClick={() => setPage((p) => Math.min(5, p + 1))}
           disabled={page >= 5}
-          className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-2 rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Next →
         </button>
       </div>
-      <p className="mt-4 text-sm text-slate-400 text-center">
+      <p className="mt-4 text-sm text-zinc-500 text-center">
         Page {page} of 5. Share this URL. Back button works. Fucking magic.
       </p>
     </div>
