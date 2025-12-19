@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { CodeBlock } from './components/code-block'
 import {
@@ -7,6 +8,12 @@ import {
   TabsDemo,
   ToggleDemo,
 } from './components/demos'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: process.env.VERCEL_URL || 'http://localhost:3000',
+  },
+}
 
 const nightmareCode = `// This is what you're doing right now, isn't it?
 const searchParams = new URLSearchParams(window.location.search)
@@ -22,7 +29,7 @@ const updateUrl = (key: string, value: string) => {
   // Do I push? Replace? What about history?
   // What about SSR? What about hydration?
   // What about type safety? LOL WHAT TYPE SAFETY
-  window.history.pushState({}, '', url)
+  window.history.pushState(null, '', url)
   // Oh wait, React didn't re-render. FUCK.
 }`
 
@@ -64,16 +71,12 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 px-4 text-center border-b border-zinc-800">
+      <section className="py-32 px-4 text-center border-b border-zinc-800">
         <p className="text-zinc-500 uppercase tracking-widest text-sm mb-4">
           STOP FUCKING AROUND WITH URL STATE
         </p>
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
-          Just Fucking Use{' '}
-          <span className="underline decoration-2 underline-offset-4">
-            nuqs
-          </span>
-          .
+          Just fucking use nuqs.
         </h1>
         <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-8">
           You&apos;ve been manually parsing query strings, fighting with router
@@ -82,22 +85,23 @@ export default function Home() {
         </p>
         <a
           href="https://nuqs.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary inline-block"
+          className="btn-primary inline-block no-underline"
         >
-          Get started →
+          Get started
         </a>
       </section>
 
       <div className="max-w-4xl mx-auto px-4">
         {/* The Problem */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-6">
@@ -106,14 +110,14 @@ export default function Home() {
           <p className="text-lg text-zinc-400 mb-8">
             You&apos;ve been building web apps for how long now? And you&apos;re
             still manually parsing{' '}
-            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
               window.location.search
             </code>
             , fighting with{' '}
-            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
               URLSearchParams
             </code>
-            , and losing state on every fucking page refresh?
+            , or losing state on every fucking page refresh?
           </p>
 
           <div className="mb-8">
@@ -136,11 +140,14 @@ export default function Home() {
 
         {/* What is nuqs */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-6">
@@ -149,13 +156,13 @@ export default function Home() {
           <p className="text-lg text-zinc-400 mb-8">
             nuqs is a type-safe search params state manager for React. Instead
             of fucking around with manual URL parsing, you use it like{' '}
-            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
               useState
             </code>
-            —except the state lives in the URL.
+            , except the state lives in the URL.
           </p>
 
-          <p className="text-lg text-slate-400 mb-4">
+          <p className="text-lg text-zinc-400 mb-4">
             Want a counter that survives page refresh? Here&apos;s all you
             fucking need:
           </p>
@@ -166,7 +173,7 @@ export default function Home() {
 
           <p className="text-lg text-zinc-400">
             No manual parsing. No type coercion bullshit. No fucking around with
-            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded ml-1">
+            <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded ml-1 text-sm">
               router.push
             </code>
             . It just works.
@@ -177,11 +184,14 @@ export default function Home() {
 
         {/* Why it's great */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-8">
@@ -190,78 +200,78 @@ export default function Home() {
 
           <div className="space-y-12">
             <div>
-              <h4 className="text-xl font-bold mb-3">
-                Type-safe, you fucking donkey
+              <h4 className="text-2xl font-bold mb-3">
+                Type-safety, do you speak it?
               </h4>
-              <p className="text-zinc-400 mb-4">
+              <p className="text-zinc-400 mb-4 text-lg">
                 Every parser knows its type.{' '}
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
                   parseAsInteger
                 </code>{' '}
                 gives you a{' '}
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
                   number
                 </code>
                 .{' '}
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
                   parseAsBoolean
                 </code>{' '}
                 gives you a{' '}
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
                   boolean
                 </code>
                 . TypeScript infers everything. No more
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded ml-1">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded ml-1 text-sm">
                   as any
-                </code>{' '}
-                bullshit.
+                </code>
+                , lying to TypeScript bullshit.
               </p>
               <CodeBlock code={typeSafeCode} lang="typescript" />
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 Shareable fucking state
               </h4>
-              <p className="text-zinc-400 mb-4">
+              <p className="text-zinc-400 mb-4 text-lg">
                 Copy the URL. Send it to someone. They get the exact same state.
-                Filters, pagination, search queries, tabs—everything. No more
+                Filters, pagination, search queries, tabs, everything. No more
                 &ldquo;can you send me a screenshot of what you&apos;re
                 seeing?&rdquo;
               </p>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 Back button actually works
               </h4>
-              <p className="text-zinc-400 mb-4">
+              <p className="text-zinc-400 mb-4 text-lg">
                 Because state is in the URL, browser history just fucking works.
                 Users can navigate back and forth. Bookmarks work. Deep links
-                work. It&apos;s how the web was supposed to fucking work.
+                work. It&apos;s how the web has been working since the 1990's.
               </p>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 SSR &amp; Static Export
               </h4>
-              <p className="text-zinc-400 mb-4">
+              <p className="text-zinc-400 mb-4 text-lg">
                 Works with Next.js App Router, Pages Router, Remix, React
-                Router—you name it. Server-side rendering? ✓ Static export? ✓
-                This very page is statically exported with nuqs. Look at the
-                fucking URL.
+                Router, you name it. Server-side rendering? ✓ Static export? ✓
+                This very page is static and it uses nuqs. Look at the fucking
+                URL.
               </p>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 Built-in parsers for everything
               </h4>
-              <p className="text-zinc-400 mb-4">
+              <p className="text-zinc-400 mb-4 text-lg">
                 Strings, integers, floats, booleans, dates, arrays, JSON, enums,
-                literals... Need something custom? Make your own parser in 5
-                lines.
+                literals... Need something custom? Make your own fucking parser
+                in 5 lines.
               </p>
               <CodeBlock code={parsersCode} lang="typescript" />
             </div>
@@ -272,11 +282,14 @@ export default function Home() {
 
         {/* Live Demos */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-8">
@@ -341,11 +354,14 @@ export default function Home() {
 
         {/* Objections */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-8">
@@ -354,41 +370,41 @@ export default function Home() {
 
           <div className="space-y-10">
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 &ldquo;I can just use URLSearchParams!&rdquo;
               </h4>
-              <p className="text-zinc-400">
-                Sure, and you can also write your own HTTP client instead of
-                using fetch. You <em>can</em> do a lot of things. Doesn&apos;t
-                mean you fucking should. URLSearchParams doesn&apos;t give you
-                type safety, doesn&apos;t integrate with React state,
-                doesn&apos;t handle SSR, and doesn&apos;t respect your time.
+              <p className="text-zinc-400 text-lg">
+                Sure, you can also write your own HTTP client instead of using
+                fetch. You <em>can</em> do a lot of things. Doesn&apos;t mean
+                you fucking should. URLSearchParams doesn&apos;t give you type
+                safety, doesn&apos;t integrate with React state, doesn&apos;t
+                handle SSR, and doesn&apos;t respect your fucking time.
               </p>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 &ldquo;It&apos;s another dependency!&rdquo;
               </h4>
-              <p className="text-zinc-400">
-                It&apos;s 4KB gzipped. You&apos;re already shipping 400KB of
-                JavaScript. This isn&apos;t the dependency to worry
-                about—it&apos;s the one that&apos;ll save you from writing 400
-                lines of URL parsing bullshit.
+              <p className="text-zinc-400 text-lg">
+                It&apos;s 6KB gzipped. You&apos;re already shipping 400KB of
+                fucking JavaScript. This isn&apos;t the dependency to worry
+                about: it&apos;s the one that&apos;ll save you from maintaining
+                400 lines of URL parsing bullshit.
               </p>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 &ldquo;Not everything should be in the URL!&rdquo;
               </h4>
-              <p className="text-zinc-400">
-                Correct! And nuqs doesn&apos;t force you to put everything
-                there. Use it for what makes sense: filters, pagination, search
+              <p className="text-zinc-400 text-lg">
+                Indeed. And nuqs doesn&apos;t force you to put everything there.
+                Use it for what makes fucking sense: filters, pagination, search
                 queries, active tabs, modal states. The stuff users expect to be
                 shareable and bookmarkable. Keep your ephemeral UI state in
                 regular{' '}
-                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded">
+                <code className="text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded text-sm">
                   useState
                 </code>
                 .
@@ -396,12 +412,45 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="text-xl font-bold mb-3">
+              <h4 className="text-2xl font-bold mb-3">
                 &ldquo;What about sensitive data?&rdquo;
               </h4>
-              <p className="text-zinc-400">
-                Don&apos;t put passwords in the URL. Jesus fucking Christ. This
-                is basic web security. nuqs is for shareable state, not secrets.
+              <p className="text-zinc-400 text-lg">
+                Don&apos;t put fucking passwords in the URL. This is basic web
+                security. nuqs is for shareable state, not secrets.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-2xl font-bold mb-3">
+                &ldquo;What about security? XSS?&rdquo;
+              </h4>
+              <p className="text-zinc-400 text-lg">
+                Don&apos;t eval the fucking URL. Parsers can keep your app safe,
+                but don't fuck around in there. If you're doing a{' '}
+                <code className="text-zinc-3000 bg-zinc-900 px-1.5 py-0.5 rounded text-sm text-nowrap">
+                  ?redirect=&lt;url&gt;
+                </code>
+                , make sure your parser handles it (eg: with{' '}
+                <code className="text-zinc-3000 bg-zinc-900 px-1.5 py-0.5 rounded text-sm text-nowrap">
+                  startsWith('/')
+                </code>
+                ) to avoid open redirects.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-2xl font-bold mb-3">
+                I use TanStack Router/Start, do I need nuqs?
+              </h4>
+              <p className="text-zinc-400 text-lg">
+                <em>Need?</em> No. TanStack Router has built-in support for
+                type-safe URL state management. It's fucking awesome. If you're
+                already using it, use its APIs, you're going to have a fucking
+                great DX.
+                <br />
+                But nuqs is compatible with it so you can use components from
+                3rd party sources that rely on nuqs in your TanStack app.
               </p>
             </div>
           </div>
@@ -411,11 +460,14 @@ export default function Home() {
 
         {/* When to use */}
         <section className="py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-8">
@@ -461,7 +513,7 @@ export default function Home() {
             <li className="flex items-start gap-3">
               <span className="text-zinc-500">•</span>
               <span className="text-zinc-400">
-                Any state that should survive page refresh?{' '}
+                Any public state that should survive page refresh?{' '}
                 <strong className="text-white">Use nuqs.</strong>
               </span>
             </li>
@@ -478,12 +530,15 @@ export default function Home() {
         <hr />
 
         {/* CTA */}
-        <section className="py-20 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Just Fucking Use{' '}
-            <span className="underline decoration-2 underline-offset-4">
+        <section className="pt-12 pb-24 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            Just fucking use{' '}
+            <a
+              href="https://nuqs.dev"
+              className="underline decoration-2 underline-offset-4"
+            >
               nuqs
-            </span>
+            </a>
             .
           </h2>
           <h3 className="text-2xl font-bold text-zinc-400 mb-8">
@@ -503,11 +558,10 @@ export default function Home() {
           </p>
           <a
             href="https://nuqs.dev/docs/installation"
-            target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary inline-block text-lg"
+            className="btn-primary inline-block text-lg no-underline"
           >
-            npm i nuqs →
+            pnpm add nuqs
           </a>
         </section>
 
@@ -517,7 +571,6 @@ export default function Home() {
             Inspired by{' '}
             <a
               href="https://justfuckingusetailwind.com"
-              target="_blank"
               rel="noopener noreferrer"
             >
               justfuckingusetailwind.com
@@ -525,7 +578,6 @@ export default function Home() {
             ,{' '}
             <a
               href="https://motherfuckingwebsite.com"
-              target="_blank"
               rel="noopener noreferrer"
             >
               motherfuckingwebsite.com
@@ -533,55 +585,32 @@ export default function Home() {
             , and all the other fucking websites.
           </p>
           <p>
-            Built with{' '}
-            <a
-              href="https://nextjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            Slop by Claude Opus 4.5, prompted by{' '}
+            <a href="https://x.com/nuqs47ng">François Best</a>. Powered by{' '}
+            <a href="https://nextjs.org" rel="noopener noreferrer">
               Next.js
             </a>
             ,{' '}
-            <a
-              href="https://tailwindcss.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://tailwindcss.com" rel="noopener noreferrer">
               Tailwind
             </a>
             , and obviously{' '}
-            <a
-              href="https://nuqs.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://nuqs.dev" rel="noopener noreferrer">
               nuqs
             </a>
             .
           </p>
           <p className="mt-4">
-            <a
-              href="https://github.com/47ng/nuqs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://github.com/47ng/nuqs" rel="noopener noreferrer">
               GitHub
             </a>
             {' · '}
-            <a
-              href="https://nuqs.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://nuqs.dev" rel="noopener noreferrer">
               Documentation
             </a>
             {' · '}
-            <a
-              href="https://twitter.com/fortysevenfx"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @fortysevenfx
+            <a href="https://x.com/nuqs47ng" rel="noopener noreferrer">
+              @nuqs47ng
             </a>
           </p>
         </footer>

@@ -10,10 +10,10 @@ importers:
     dependencies:
       next:
         specifier: ^16.1.0
-        version: 16.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.0(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       nuqs:
         specifier: ^2.8.5
-        version: 2.8.5(next@16.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 2.8.5(next@16.1.0(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       react:
         specifier: ^19.2.3
         version: 19.2.3
@@ -36,6 +36,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.23
         version: 10.4.23(postcss@8.5.6)
+      babel-plugin-react-compiler:
+        specifier: ^1.0.0
+        version: 1.0.0
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -51,6 +54,18 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@babel/helper-string-parser@7.27.1':
+    resolution: {integrity: sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-validator-identifier@7.28.5':
+    resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.28.5':
+    resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
+    engines: {node: '>=6.9.0'}
 
   '@emnapi/runtime@1.7.1':
     resolution: {integrity: sha512-PVtJr5CmLwYAU9PZDMITZoR5iAOShYREoR45EyyLrbntV50mdePTgUn4AmOw90Ifcj+x2kRjdzr1HP3RrNiHGA==}
@@ -334,6 +349,9 @@ packages:
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
+
+  babel-plugin-react-compiler@1.0.0:
+    resolution: {integrity: sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==}
 
   baseline-browser-mapping@2.9.10:
     resolution: {integrity: sha512-2VIKvDx8Z1a9rTB2eCkdPE5nSe28XnA+qivGnWHoB40hMMt/h1hSz0960Zqsn6ZyxWXUie0EBdElKv8may20AA==}
@@ -831,6 +849,15 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
+  '@babel/helper-string-parser@7.27.1': {}
+
+  '@babel/helper-validator-identifier@7.28.5': {}
+
+  '@babel/types@7.28.5':
+    dependencies:
+      '@babel/helper-string-parser': 7.27.1
+      '@babel/helper-validator-identifier': 7.28.5
+
   '@emnapi/runtime@1.7.1':
     dependencies:
       tslib: 2.8.1
@@ -1066,6 +1093,10 @@ snapshots:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
+  babel-plugin-react-compiler@1.0.0:
+    dependencies:
+      '@babel/types': 7.28.5
+
   baseline-browser-mapping@2.9.10: {}
 
   binary-extensions@2.3.0: {}
@@ -1256,7 +1287,7 @@ snapshots:
 
   nanoid@3.3.11: {}
 
-  next@16.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next@16.1.0(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@next/env': 16.1.0
       '@swc/helpers': 0.5.15
@@ -1275,6 +1306,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.1.0
       '@next/swc-win32-arm64-msvc': 16.1.0
       '@next/swc-win32-x64-msvc': 16.1.0
+      babel-plugin-react-compiler: 1.0.0
       sharp: 0.34.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -1284,12 +1316,12 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  nuqs@2.8.5(next@16.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3):
+  nuqs@2.8.5(next@16.1.0(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3):
     dependencies:
       '@standard-schema/spec': 1.0.0
       react: 19.2.3
     optionalDependencies:
-      next: 16.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.0(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
 
   object-assign@4.1.1: {}
 

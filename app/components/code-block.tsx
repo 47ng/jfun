@@ -13,7 +13,7 @@ export async function CodeBlock({
 }: CodeBlockProps) {
   const html = await codeToHtml(code.trim(), {
     lang,
-    theme: 'vitesse-dark',
+    theme: 'catppuccin-mocha',
   })
 
   return (
